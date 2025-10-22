@@ -1,0 +1,232 @@
+/* static/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap');
+
+:root {
+    --primary-color: #005A9E;
+    --secondary-color: #007BFF;
+    --background-color: #F8F9FA;
+    --card-background: #FFFFFF;
+    --text-color: #343A40;
+    --border-color: #DEE2E6;
+    --success-color: #28A745;
+}
+
+body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    margin: 0;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 850px;
+    margin: auto;
+    background: var(--card-background);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border-top: 5px solid var(--primary-color);
+}
+
+h1, h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+p.subtitle {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #6c757d;
+}
+
+fieldset {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+legend {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    padding: 0 10px;
+}
+
+/* --- Phần Thông tin cá nhân --- */
+.personal-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.text-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.text-input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+/* --- Bảng Đánh giá Năng lực --- */
+.ability-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.ability-table th, .ability-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ability-table th {
+    background-color: #f8f9fa;
+    font-weight: 500;
+}
+
+.ability-table td:not(:first-child) {
+    text-align: center;
+}
+
+.ability-table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* --- Checkbox & Radio Buttons --- */
+.choice-group label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.choice-option {
+    background-color: #f8f9fa;
+    border: 1px solid var(--border-color);
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.choice-option:hover {
+    background-color: #e9ecef;
+}
+
+.choice-option input {
+    margin-right: 12px;
+    width: 1.15em;
+    height: 1.15em;
+}
+
+/* --- Button Gửi đi --- */
+.submit-button {
+    display: block;
+    width: 100%;
+    background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+    color: #fff;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+/* dinh dang dang ket qua */
+
+.result-container {
+    text-align: left;
+}
+
+.result-section {
+    background-color: #F8F9FA;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.result-section h3 {
+    font-size: 1.25rem;
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+}
+
+.result-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.result-section ul li {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.result-section ul li strong {
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.recommendation {
+    background-color: var(--card-background);
+    border-left: 5px solid var(--success-color);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 0 8px 8px 0;
+}
+
+.recommendation h4 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    color: var(--success-color);
+}
+
+.recommendation p {
+    margin: 5px 0 0 0;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng khảo sát - Tư vấn chọn tổ hợp môn</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bảng Khảo sát Định hướng & Năng lực</h1>
+        <p class="subtitle">Hãy dành vài phút để khám phá bản thân và tìm ra lựa chọn phù hợp nhất cho tương lai của bạn.</p>
+        
+        <form action="/ketqua" method="POST">
+            <fieldset>
+                <legend>Thông tin cá nhân</legend>
+                <div class="personal-info-grid">
+                    <div class="form-group">
+                        <label for="ho_ten">Họ và tên:</label>
+                        <input type="text" id="ho_ten" name="ho_ten" class="text-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lop">Lớp:</label>
+                        <input type="text" id="lop" name="lop" class="text-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sdt">Số điện thoại:</label>
+                        <input type="tel" id="sdt" name="sdt" class="text-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" class="text-input">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Phần A: Năng lực học tập</legend>
+                <p>Đánh giá mức độ yêu thích hoặc học tốt các môn sau (1=Rất yếu, 5=Rất giỏi).</p>
+                <table class="ability-table">
+                    <thead>
+                        <tr>
+                            <th>Môn học</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set subjects = ["Toán", "Ngữ văn", "Ngoại ngữ", "Lý", "Hóa học", "Sinh học", "Lịch sử", "Địa lí", "GD Kinh tế & Pháp luật", "Tin học", "Công nghệ"] %}
+                        {% for subject in subjects %}
+                        <tr>
+                            <td>{{ subject }}</td>
+                            {% for i in range(1, 6) %}
+                            <td><input type="radio" name="mon_{{ subject }}" value="{{ i }}" required></td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </fieldset>
+
+            <fieldset>
+                <legend>Phần B: Khám phá Sở thích</legend>
+                <div class="choice-group">
+                    <label><b>Câu 2:</b> Khi có thời gian rảnh, bạn thích hoạt động nào nhất? (Chọn 2)</label>
+                    {% for option in holland_questions.cau2 %}
+                    <label class="choice-option">
+                        <input type="checkbox" name="cau2" value="{{ option }}"> {{ option }}
+                    </label>
+                    {% endfor %}
+                </div>
+                 <div class="choice-group">
+                    <label><b>Câu 3:</b> Môi trường làm việc lý tưởng của bạn? (Chọn 2)</label>
+                    {% for option in holland_questions.cau3 %}
+                    <label class="choice-option">
+                        <input type="checkbox" name="cau3" value="{{ option }}"> {{ option }}
+                    </label>
+                    {% endfor %}
+                </div>
+                <div class="choice-group">
+                    <label><b>Câu 4:</b> Khi giải quyết vấn đề, bạn có xu hướng...? (Chọn 1)</label>
+                    {% for option in holland_questions.cau4 %}
+                    <label class="choice-option">
+                        <input type="radio" name="cau4" value="{{ option }}" required> {{ option }}
+                    </label>
+                    {% endfor %}
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Phần C: Định hướng Nghề nghiệp</legend>
+                <div class="choice-group">
+                    <label><b>Câu 5:</b> Bạn quan tâm đến nhóm ngành nào nhất? (Có thể chọn nhiều)</label>
+                    {% set careers = ["Kỹ thuật - Công nghệ", "Công nghệ thông tin", "Y - Dược - Sinh học", "Kinh tế - Quản trị - Marketing", "Khoa học Xã hội", "Luật sư, Nhà báo, Chuyên gia tâm lý", "Sư phạm", "Nghệ thuật - Thiết kế", "Em chưa có định hướng rõ ràng"] %}
+                    {% for career in careers %}
+                    <label class="choice-option">
+                        <input type="checkbox" name="cau5" value="{{ career }}"> {{ career }}
+                    </label>
+                    {% endfor %}
+                </div>
+            </fieldset>
+
+            <button type="submit" class="submit-button">Xem Kết Quả Gợi Ý</button>
+        </form>
+    </div>
+</body>
+</html>

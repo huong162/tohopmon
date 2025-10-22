@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả Tư vấn</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Kết quả Phân tích & Gợi ý</h1>
+
+        <div class="result-container">
+            <div class="result-section">
+                <h3>✨ Phân tích cá nhân</h3>
+                <ul>
+                    {% for line in recommendation_text.analysis %}
+                    <li><strong>{{ line.split(':')[0] }}:</strong>{{ line.split(':', 1)[1] }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="result-section">
+                <h3>🏆 Gợi ý các tổ hợp môn phù hợp nhất</h3>
+                {% for rec in recommendation_text.recommendations %}
+                <div class="recommendation">
+                    <h4>{{ rec.rank }}: {{ rec.name }} (Điểm: {{ rec.score }})</h4>
+                    <p><strong>Các môn:</strong> {{ rec.subjects }}</p>
+                    <p><strong>Lý do gợi ý:</strong> {{ rec.reason }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="button-group">
+            <a href="/khaosat" class="submit-button" style="width: auto;">Làm lại khảo sát</a>
+            <a href="/" class="submit-button" style="background: var(--secondary-color); width: auto;">Về trang chủ</a>
+        </div>
+    </div>
+</body>
+</html>
